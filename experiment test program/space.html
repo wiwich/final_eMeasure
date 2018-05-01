@@ -1,0 +1,103 @@
+<html>
+<head></head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+body {background-color:#FFF;}
+
+#timedate {
+  font: small-caps bold 43px/150% Arial, Helvetica, sans-serif;
+  text-align:left;
+  width: 50%;
+  margin: 20px auto;
+  color:#333;
+  /*border-left: 20px solid yellow;*/
+  padding: 20px;
+}
+
+</style>
+<body onLoad="initClock()">
+    
+    <!-- <div id="timedate" style="display: none;">
+        <a id="mon">January</a>
+        <a id="d">1</a>,
+        <a id="y">0</a>
+        <a id="h">12</a> :
+        <a id="m">00</a>:
+        <a id="s">00</a>:
+        <a id="mi">000</a> 
+    </div> -->
+
+    <div id="dateRun" style="display: none;"></div>
+    <!-- <div id="dateStop"></div> -->
+
+</body>
+</html>
+<script>
+// START CLOCK SCRIPT
+
+Number.prototype.pad = function(n) {
+  for (var r = this.toString(); r.length < n; r = 0 + r);
+  return r;
+};
+
+function updateClock() {
+  var now = new Date();
+  var milli = now.getMilliseconds(),
+        sec = now.getSeconds(),
+        min = now.getMinutes(),
+        hou = now.getHours(),
+        mo = now.getMonth(),
+        dy = now.getDate(),
+        yr = now.getFullYear();
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+/*  
+  var tags = ["mon", "d", "y", "h", "m", "s", "mi"],
+    corr = [months[mo], dy, yr, hou.pad(2), min.pad(2), sec.pad(2), milli];
+    for (var i = 0; i < tags.length; i++)
+        document.getElementById(tags[i]).firstChild.nodeValue = corr[i];
+*/
+    var tags = ["mon", "d", "y", "h", "m", "s", "mi"],
+    corr = [months[mo], dy, yr, hou.pad(2), min.pad(2), sec.pad(2), milli];
+    tmp = "";
+    for (var i = 0; i < tags.length; i++)
+        tmp += corr[i] + " ";
+
+    document.getElementById('dateRun').innerHTML = tmp;
+
+}
+
+function initClock() {
+  updateClock();
+  window.setInterval("updateClock()", 1);
+}
+
+var space = false;
+$(function() {
+  $(document).keyup(function(evt) {
+    if (evt.keyCode == 32) {
+      space = false;
+    }
+  }).keydown(function(evt) {
+    if (evt.keyCode == 32) {
+        space = true;
+        //content = document.getElementById('dateStop').innerHTML = document.getElementById('dateRun').innerHTML
+        content = document.getElementById('dateRun').innerHTML
+
+
+        $.ajax({
+        method: "POST",
+        url: "date.php",
+        data: { dateData: content }
+        })
+        .done(function( msg ) {
+            //alert( "Data Saved: " + msg );
+        });
+
+    }
+  });
+});
+
+
+
+// END CLOCK SCRIPT    
+</script>
