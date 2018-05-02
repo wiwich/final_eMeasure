@@ -1,5 +1,5 @@
 <?php
-
+	session_id();
 	session_start();
 
 	$_SESSION['movieArr'] = array();
@@ -9,8 +9,6 @@
 
 
 		array_push($_SESSION['movieArr'],$movie[$i]);
-
-
 	}
 
 	require_once "conn.php";

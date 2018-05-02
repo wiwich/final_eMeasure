@@ -1,3 +1,6 @@
+<?php
+	session_id();
+?>
 <html>
 <style>
 	body{
@@ -23,7 +26,7 @@
 		<img class="mySlide" src="image/img_2.jpg">
 		<img class="mySlide" src="image/img_1.jpg">
 		<video id="myVideo" class="mySlide">
-			<source src="image/testVDO.mp4" type="video/mp4">
+			<source src="image/part1.mp4" type="video/mp4">
 		</video>	
 	</div>
 	<div id="dateRun" style="display: none;"></div>

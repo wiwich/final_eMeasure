@@ -57,7 +57,7 @@
 			</div>
 			<div class="row"  style="margin:100px;">
 				<div class="col-sm-12" style="text-align:center; ">
-					<input type="button" id="btnNext" value="NEXT">
+					<input type="button" id="btnNext" value="Next">
 				</div>
 			</div>
 		</form>

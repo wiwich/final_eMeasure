@@ -1,3 +1,23 @@
+<?php
+	session_start();
+
+	if(isset($_REQUEST['chkData'])) {
+
+		require_once "conn.php";
+		//estimation
+		//user_id,vdo_id,est_arousal,est_valence
+		$sql = "INSERT INTO estimation 
+				(user_id,vdo_id,est_arousal,est_valence)
+				VALUES
+				('".$_SESSION['userID']."','1','".$_REQUEST['arousal']."','".$_REQUEST['valence']."')";
+		$conn->query($sql) or die($conn->error);
+
+
+		echo "<script>window.location = 'exp_part2_2.php'</script>";
+		exit();
+
+	}
+?>
 <html>
 <style>
 	body{ <!--background-color: #000000;-->	}
@@ -13,7 +33,8 @@
       timer.innerHTML = "This page will redirect in " + count + " seconds."; // Timer Message
       setTimeout("countDown()", 1000);
     } else {
-      window.location.href = redirect;
+      //window.location.href = redirect;
+      $('#frmSave').submit();
     }
   }
 </script>
@@ -26,34 +47,34 @@
 </header>
 
 <body>
-	<form> 
+	<form id="frmSave" action="" method="post"> 
 		<div class="wrap" style="text-align:center; margin-top:20px;">
 			Valence (negative-positive)
 			<div class="row" name"valence" style="margin-top:20px; margin-left:70px;">
 				<div class="col-sm-2">
 					<img src="image/valence_1.jpg">
 					<br>
-					<input type="radio" name="valence">
+					<input type="radio" name="valence" value="1">
 				</div>
 				<div class="col-sm-2">
 					<img src="image/valence_3.jpg">
 					<br>
-					<input type="radio" name="valence">
+					<input type="radio" name="valence" value="3">
 				</div>
 				<div class="col-sm-2">
 					<img src="image/valence_5.jpg">
 					<br>
-					<input type="radio" name="valence">
+					<input type="radio" name="valence" value="5">
 				</div>
 				<div class="col-sm-2">
 					<img src="image/valence_7.jpg">
 					<br>
-					<input type="radio" name="valence">
+					<input type="radio" name="valence" value="7">
 				</div>
 				<div class="col-sm-2">
 					<img src="image/valence_9.jpg">
 					<br>
-					<input type="radio" name="valence">
+					<input type="radio" name="valence" value="9">
 				</div>
 			</div>
 		</div>
@@ -64,27 +85,27 @@
 				<div class="col-sm-2">
 					<img src="image/arousal_1.jpg">
 					<br>
-					<input type="radio" name="arousal">
+					<input type="radio" name="arousal" value="1">
 				</div>
 				<div class="col-sm-2">
 					<img src="image/arousal_3.jpg">
 					<br>
-					<input type="radio" name="arousal">
+					<input type="radio" name="arousal" value="3">
 				</div>
 				<div class="col-sm-2">
 					<img src="image/arousal_5.jpg">
 					<br>
-					<input type="radio" name="arousal">
+					<input type="radio" name="arousal" value="5">
 				</div>
 				<div class="col-sm-2">
 					<img src="image/arousal_7.jpg">
 					<br>
-					<input type="radio" name="arousal">
+					<input type="radio" name="arousal" value="7">
 				</div>
 				<div class="col-sm-2">
 					<img src="image/arousal_9.jpg">
 					<br>
-					<input type="radio" name="arousal">
+					<input type="radio" name="arousal" value="9">
 				</div>
 			</div>
 		</div>
@@ -97,7 +118,8 @@
 				</script>
 			</p>
 			<!-- <button type="button"><a href="exp_part2_1.php">Next</button> -->
-		</div>		
+		</div>	
+		<input type="hidden" name="chkData" value="yes">		
 	</form>
 </body>
 </html>
