@@ -1,10 +1,15 @@
+<?php
+
+	session_start();
+
+?>
 <html>
 <style>
 	body{ <!--background-color: #000000;-->	}
 </style>
 <script type="text/javascript">
   var count = 10; // Timer
-  var redirect = "exp_part3_1.php"; // Target URL
+  var redirect = "exp_part3_2.php"; // Target URL
 
   function countDown() {
     var timer = document.getElementById("timer"); // Timer ID

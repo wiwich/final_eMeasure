@@ -2,6 +2,21 @@
 <style>
 	body{ <!--background-color: #000000;-->	}
 </style>
+<script type="text/javascript">
+  var count = 10; // Timer
+  var redirect = "exp_part2_1.php"; // Target URL
+
+  function countDown() {
+    var timer = document.getElementById("timer"); // Timer ID
+    if (count > 0) {
+      count--;
+      timer.innerHTML = "This page will redirect in " + count + " seconds."; // Timer Message
+      setTimeout("countDown()", 1000);
+    } else {
+      window.location.href = redirect;
+    }
+  }
+</script>
 <header>
 	<title>Title</title>
 	<meta name="viewport" content = "width=divice-width, initial-scale=1"> 
@@ -76,7 +91,12 @@
 		
 
 		<div class="row" name="nextPage" style="text-align: center; margin-top: 100px;">
-			<button type="button"><a href="exp_part2_1.php">Next</button>
+			<p id="timer">
+				<script type="text/javascript">
+					countDown();
+				</script>
+			</p>
+			<!-- <button type="button"><a href="exp_part2_1.php">Next</button> -->
 		</div>		
 	</form>
 </body>

@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <html>
 <style>
 	body{ <!--background-color: #000000;-->	}

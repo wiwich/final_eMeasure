@@ -1,7 +1,31 @@
+<?php
+
+	session_start();
+
+	$_SESSION['movieArr'] = array();
+
+	$movie = $_REQUEST['movie'];
+	for($i=0;$i<count($movie);$i++) {
+
+
+		array_push($_SESSION['movieArr'],$movie[$i]);
+
+
+	}
+
+	require_once "conn.php";
+
+	$sql = "SELECT 	vdo_name FROM vdo_storage WHERE vdo_id = '".$_SESSION['movieArr'][0]."' ";
+	$rs = $conn->query($sql);
+	$data = $rs->fetch_object();
+
+	//print_r($_SESSION['movieArr']);
+
+?>
 <html>
 <style>
 	body{
-		background-color: #000000;
+		<!--background-color: #000000;-->
 	}
 </style>
 <header>
@@ -17,13 +41,13 @@
 	
 	<img id="pressImg" src=" image/pressSpacebar.jpg">
 
-	<div class="w3-content w3-section"style="text-align:center;">		
+	<div class="w3-content w3-section">		
 		<img class="mySlide" src="image/wait.jpg">
 		<img class="mySlide" src="image/img_3.jpg">
 		<img class="mySlide" src="image/img_2.jpg">
 		<img class="mySlide" src="image/img_1.jpg">
 		<video id="myVideo" class="mySlide">
-			<source src="image/testVDO.mp4" type="video/mp4">
+			<source src="image/<?=$data->vdo_name?>.mp4" type="video/mp4">
 		</video>	
 	</div>
 	<div id="dateRun" style="display: none;"></div>
@@ -48,7 +72,7 @@
 				document.getElementById('myVideo').play();
 				document.getElementById('myVideo').addEventListener('ended', myHandler,false);
 				function myHandler(e){
-					window.location = 'exp_SAM1_1.php';
+					window.location = 'exp_SAM3_1.php';
 				}
 			} else if(myIndex==1){
 				setTimeout(carousel,2000)
