@@ -9,7 +9,7 @@
 		$sql = "INSERT INTO estimation 
 				(user_id,vdo_id,est_arousal,est_valence)
 				VALUES
-				('".$_SESSION['userID']."','1','".$_REQUEST['arousal']."','".$_REQUEST['valence']."')";
+				('".$_SESSION['userID']."','2','".$_REQUEST['arousal']."','".$_REQUEST['valence']."')";
 		$conn->query($sql) or die($conn->error);
 
 
