@@ -14,7 +14,7 @@
 		$conn->query($sql) or die($conn->error);
 
 
-		echo "<script>window.location = 'exp_part2_1.php'</script>";
+		echo "<script>window.location = 'exp_part3_2.php'</script>";
 		exit();
 
 	}

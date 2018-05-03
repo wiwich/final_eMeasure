@@ -1,19 +1,6 @@
 <?php
 	session_start();
 
-/*
-	$_SESSION['valArr'] = array();
-	$val = $_REQUEST['val'];
-	for($i=0; $i<count($val); $i++){
-		array_push(valArr, var)
-	}
-	require "conn.php";
-
-	$sql="SELECT vdo_name FROM vdo_storage WHERE vdo_id = '1'";
-	$rs = $conn->query($sql);
-	$data = $rs->fetch_object();
-*/
-
 	if(isset($_REQUEST['chkData'])) {
 
 		require_once "conn.php";
@@ -26,7 +13,7 @@
 		$conn->query($sql) or die($conn->error);
 
 
-		echo "<script>window.location = 'exp_part2_3.php'</script>";
+		echo "<script>window.location = 'exp_part3_0.php'</script>";
 		exit();
 
 	}
@@ -35,16 +22,9 @@
 <style>
 	body{ <!--background-color: #000000;-->	}
 </style>
-
-<header>
-	<title>Title</title>
-	<meta name="viewport" content = "width=divice-width, initial-scale=1"> 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
   var count = 10; // Timer
-  var redirect = "exp_part2_1.php"; // Target URL
+  var redirect = "exp_part2_2.php"; // Target URL
 
   function countDown() {
     var timer = document.getElementById("timer"); // Timer ID
@@ -58,11 +38,15 @@
     }
   }
 </script>
-
+<header>
+	<title>Title</title>
+	<meta name="viewport" content = "width=divice-width, initial-scale=1"> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </header>
 
 <body>
-	<div id="dateRun" style="display: none;"></div>
 	<form id="frmSave" action="" method="post"> 
 		<div class="wrap" style="text-align:center; margin-top:20px;">
 			Valence (negative-positive)
@@ -134,7 +118,7 @@
 				</script>
 			</p>
 			<!-- <button type="button"><a href="exp_part2_1.php">Next</button> -->
-		</div>
+		</div>	
 		<input type="hidden" name="chkData" value="yes">		
 	</form>
 </body>
