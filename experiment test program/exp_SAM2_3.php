@@ -13,7 +13,7 @@
 		$conn->query($sql) or die($conn->error);
 
 
-		echo "<script>window.location = 'exp_part2_3.php'</script>";
+		echo "<script>window.location = 'exp_part3_0.php'</script>";
 		exit();
 
 	}
@@ -24,7 +24,7 @@
 </style>
 <script type="text/javascript">
   var count = 10; // Timer
-  var redirect = "exp_part2_2.php"; // Target URL
+  var redirect = "exp_part2_3.php"; // Target URL
 
   function countDown() {
     var timer = document.getElementById("timer"); // Timer ID
