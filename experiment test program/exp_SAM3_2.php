@@ -1,19 +1,6 @@
 <?php
 	session_start();
 
-/*
-	$_SESSION['valArr'] = array();
-	$val = $_REQUEST['val'];
-	for($i=0; $i<count($val); $i++){
-		array_push(valArr, var)
-	}
-	require "conn.php";
-
-	$sql="SELECT vdo_name FROM vdo_storage WHERE vdo_id = '1'";
-	$rs = $conn->query($sql);
-	$data = $rs->fetch_object();
-*/
-
 	if(isset($_REQUEST['chkData'])) {
 
 		require_once "conn.php";
