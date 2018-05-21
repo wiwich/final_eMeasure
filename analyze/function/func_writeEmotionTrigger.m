@@ -13,10 +13,10 @@ function func_writeEmotionTrigger(FILENAME,emo,data,st, en)
 % Last Updated: 17 May 2018
 % ----------------------------------------------------------------------
 
-    dif = fopen(FILENAME,'w');
+    dif = fopen(FILENAME,'a+');
 
-    title = 'timestamp, timeStart, wirelessStrength, F7_quality, F8_quality, T7_quality, T8_quality, F7_theta, F7_alpha, F7_lowBeta, F7_highBeta, F7_gamma, F8_theta, F8_alpha, F8_lowBeta, F8_highBeta, F8_gamma, T7_theta, T7_alpha, T7_lowBeta, T7_highBeta, T7_gamma, T7_theta, T8_alpha, T8_lowBeta, T8_highBeta, T8_gamma, Label';
-    fprintf(dif,title); fprintf(dif,'\n');
+%     title = 'timestamp, timeStart, wirelessStrength, F7_quality, F8_quality, T7_quality, T8_quality, F7_theta, F7_alpha, F7_lowBeta, F7_highBeta, F7_gamma, F8_theta, F8_alpha, F8_lowBeta, F8_highBeta, F8_gamma, T7_theta, T7_alpha, T7_lowBeta, T7_highBeta, T7_gamma, T7_theta, T8_alpha, T8_lowBeta, T8_highBeta, T8_gamma, Label';
+%     fprintf(dif,title); fprintf(dif,'\n');
     for i=st:en
        fprintf(dif,'%s, ',data.timestamp(i,:));
        fprintf(dif,'%d, ',data.timeStart(i));
@@ -54,5 +54,5 @@ function func_writeEmotionTrigger(FILENAME,emo,data,st, en)
        fprintf(dif,'%s',emo);
        fprintf(dif,'\n');
     end
-%     fclose(FILENAME);
+    fclose('all');
 end
